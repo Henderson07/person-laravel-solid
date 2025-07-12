@@ -6,7 +6,7 @@ use App\Http\Controllers\PersonController;
 
 Route::get('/person/create', function () {
     return view('person.create');
-})->name('person.create'); // <- Adiciona o nome aqui
+})->name('person.create');
 
-Route::post('/person/create', [\App\Http\Controllers\PersonController::class, 'create']);
+Route::post('/person/create', [PersonController::class, 'create'])->name('person.create');
 

@@ -14,6 +14,7 @@
 -   ✅ Validação de documento (CPF/CNPJ)
 -   ✅ Estrutura de serviços separada por tipo de pessoa
 -   ✅ Persistência no banco de dados MySQL via Eloquent
+-   ✅ Testes automatizados
 
 ---
 
@@ -23,7 +24,10 @@
 app/
 ├── Http/
 │   └── Controllers/
-│       └── PersonController.php          # Controller principal
+│       └── PersonController.php         # Controller principal
+├── Helpers/
+│   ├── CNPJValidator.php                # Validação Cnpj
+│   └── CPFValidator.php                 # Validação Cpf
 ├── Services/
 │   ├── PersonServiceInterface.php       # Interface base
 │   ├── PersonFisicService.php           # Serviço para pessoa física
@@ -37,8 +41,21 @@ app/
 │   └── BusinessRuleException.php        # Regras de negócio violadas
 resources/
 └── views/
-    └── person/
-        └── create.blade.php             # Formulário para criar pessoa
+│    └── person/
+│        └── create.blade.php             # Formulário para criar pessoa
+tests/
+├── Unit/
+│   ├── Helpers/
+│   │   ├── CNPJValidatorTest.php
+│   │   └── CPFValidatorTest.php
+│   ├── Services/
+│   │   ├── PersonFisicServiceTest.php
+│   │   ├── PersonJuridicServiceTest.php
+│   │   └── PersonServiceResolverTest.php
+│   └── Models/
+├── Feature/
+│   └── Controllers/
+│       └── PersonControllerTest.php
 ```
 
 ---

@@ -11,6 +11,9 @@ class PersonFisicService implements PersonServiceInterface
 {
     public function createPerson(string $name, string $document): PersonFisic
     {
+
+        $document = preg_replace('/[^0-9]/', '', $document);
+
         if (!CPFValidator::isValid($document)) {
             throw new BusinessRuleException("CPF inválido.");
         }
