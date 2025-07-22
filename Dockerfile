@@ -29,7 +29,7 @@ COPY . .
 RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html
 
 # Copia e aplica permissão de execução ao script de inicialização
-COPY docker/entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 # Altera o DocumentRoot para a pasta "public"
