@@ -70,30 +70,55 @@ tests/
 -   Laravel 10+
 -   Docker (opcional)
 
+---
+
+## 🚨 Pré-requisitos importantes para Docker
+
+### 1. **Sistemas Windows**:
+   - Certifique-se que o arquivo `entrypoint.sh` tenha terminadores de linha no formato **Unix (LF)**
+   - Use editores como VS Code, Notepad++ ou Sublime Text para conversão
+   - **No VS Code**: clique no `CRLF` no canto inferior direito e selecione `LF`
+   - **No Notepad++**: vá em `Editar` → `Conversão EOL` → `Formato Unix (LF)`
+
+### 2. **Arquivo .env**:
+   ```bash
+   # ANTES de subir os containers, execute:
+   cp .env.example .env
+   ```
+
+### 3. **Permissões (Linux/macOS)**:
+   ```bash
+   # Garanta que o entrypoint.sh seja executável:
+   chmod +x entrypoint.sh
+   ```
+
+---
+
 ### 🚀 Rodando com Docker (recomendado)
 
-````bash
+```bash
 # 1. Clone o repositório
 git clone https://github.com/Henderson07/person-laravel-solid.git
 cd person-laravel-solid
 
-# 2. Suba os containers com Docker Compose
+# 2. Configure o arquivo .env
+cp .env.example .env
+
+# 3. Suba os containers com Docker Compose
 docker-compose up --build
+```
+
+**Acesse**: http://localhost:8000/person/create
+
+⚠️ **O container `laravel-app` já executa automaticamente**:
+- `composer install`
+- `php artisan key:generate`
+- `php artisan migrate`
+- Configuração de permissões nas pastas necessárias
+- Inicialização do Apache no container
 
 ---
-Acesse: http://localhost:8000/person/create
 
-⚠️ O container laravel-app já executa automaticamente:
-
-composer install
-
-php artisan key:generate
-
-php artisan migrate
-
-chmod nas pastas necessárias
-
-Inicia o Apache no container
 ### 💻 Rodando manualmente (sem Docker)
 
 ```bash
@@ -123,7 +148,27 @@ php artisan migrate
 php artisan serve
 ```
 
-Acesse: [http://localhost:8000/person/create](http://localhost:8000/person/create)
+**Acesse**: [http://localhost:8000/person/create](http://localhost:8000/person/create)
+
+---
+
+## 🐛 Solucionando problemas comuns
+
+### Docker não sobe ou apresenta erros:
+1. **Verifique se o arquivo `entrypoint.sh` está no formato Unix (LF)**
+2. **Confirme que o `.env` foi criado** a partir do `.env.example`
+3. **Limpe o cache do Docker**:
+   ```bash
+   docker-compose down
+   docker system prune -f
+   docker-compose up --build
+   ```
+
+### Erro de permissão (Linux/macOS):
+```bash
+sudo chmod +x entrypoint.sh
+sudo chown -R $USER:$USER storage bootstrap/cache
+```
 
 ---
 
@@ -160,7 +205,7 @@ Use:
 ```bash
 git tag -a v1.0.0 -m "Versão estável inicial"
 git push origin v1.0.0
-````
+```
 
 ---
 
