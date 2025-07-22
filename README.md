@@ -70,7 +70,31 @@ tests/
 -   Laravel 10+
 -   Docker (opcional)
 
-### 🚀 Passos para rodar localmente
+### 🚀 Rodando com Docker (recomendado)
+
+````bash
+# 1. Clone o repositório
+git clone https://github.com/Henderson07/person-laravel-solid.git
+cd person-laravel-solid
+
+# 2. Suba os containers com Docker Compose
+docker-compose up --build
+
+---
+Acesse: http://localhost:8000/person/create
+
+⚠️ O container laravel-app já executa automaticamente:
+
+composer install
+
+php artisan key:generate
+
+php artisan migrate
+
+chmod nas pastas necessárias
+
+Inicia o Apache no container
+### 💻 Rodando manualmente (sem Docker)
 
 ```bash
 # 1. Clone o repositório
@@ -88,9 +112,9 @@ php artisan key:generate
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=nome-seu-banco
-DB_USERNAME=user
-DB_PASSWORD=senha
+DB_DATABASE=person-laravel
+DB_USERNAME=root
+DB_PASSWORD=root
 
 # 5. Rode as migrations
 php artisan migrate
@@ -136,7 +160,7 @@ Use:
 ```bash
 git tag -a v1.0.0 -m "Versão estável inicial"
 git push origin v1.0.0
-```
+````
 
 ---
 
