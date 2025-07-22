@@ -88,9 +88,9 @@ php artisan key:generate
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=nome-seu-banco
-DB_USERNAME=user
-DB_PASSWORD=senha
+DB_DATABASE=person-laravel
+DB_USERNAME=root
+DB_PASSWORD=root
 
 # 5. Rode as migrations
 php artisan migrate
