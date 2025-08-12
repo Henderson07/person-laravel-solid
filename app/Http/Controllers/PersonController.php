@@ -25,7 +25,7 @@ class PersonController extends Controller
     public function create(Request $request)
     {
         $type = $request->input('type');
-        $service = $this->serviceResolver->resolve($type); // Resolver para obter o serviço correto
+        $service = $this->serviceResolver->resolve($type);
 
         try {
             // Cria a pessoa e retorna a resposta
@@ -40,4 +40,3 @@ class PersonController extends Controller
         }
     }
 }
-

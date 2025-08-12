@@ -52,7 +52,6 @@ tests/
 │   │   ├── PersonFisicServiceTest.php
 │   │   ├── PersonJuridicServiceTest.php
 │   │   └── PersonServiceResolverTest.php
-│   └── Models/
 ├── Feature/
 │   └── Controllers/
 │       └── PersonControllerTest.php
@@ -75,22 +74,25 @@ tests/
 ## 🚨 Pré-requisitos importantes para Docker
 
 ### 1. **Sistemas Windows**:
-   - Certifique-se que o arquivo `entrypoint.sh` tenha terminadores de linha no formato **Unix (LF)**
-   - Use editores como VS Code, Notepad++ ou Sublime Text para conversão
-   - **No VS Code**: clique no `CRLF` no canto inferior direito e selecione `LF`
-   - **No Notepad++**: vá em `Editar` → `Conversão EOL` → `Formato Unix (LF)`
+
+-   Certifique-se que o arquivo `entrypoint.sh` tenha terminadores de linha no formato **Unix (LF)**
+-   Use editores como VS Code, Notepad++ ou Sublime Text para conversão
+-   **No VS Code**: clique no `CRLF` no canto inferior direito e selecione `LF`
+-   **No Notepad++**: vá em `Editar` → `Conversão EOL` → `Formato Unix (LF)`
 
 ### 2. **Arquivo .env**:
-   ```bash
-   # ANTES de subir os containers, execute:
-   cp .env.example .env
-   ```
+
+```bash
+# ANTES de subir os containers, execute:
+cp .env.example .env
+```
 
 ### 3. **Permissões (Linux/macOS)**:
-   ```bash
-   # Garanta que o entrypoint.sh seja executável:
-   chmod +x entrypoint.sh
-   ```
+
+```bash
+# Garanta que o entrypoint.sh seja executável:
+chmod +x entrypoint.sh
+```
 
 ---
 
@@ -111,11 +113,12 @@ docker-compose up --build
 **Acesse**: http://localhost:8000/person/create
 
 ⚠️ **O container `laravel-app` já executa automaticamente**:
-- `composer install`
-- `php artisan key:generate`
-- `php artisan migrate`
-- Configuração de permissões nas pastas necessárias
-- Inicialização do Apache no container
+
+-   `composer install`
+-   `php artisan key:generate`
+-   `php artisan migrate`
+-   Configuração de permissões nas pastas necessárias
+-   Inicialização do Apache no container
 
 ---
 
@@ -155,16 +158,18 @@ php artisan serve
 ## 🐛 Solucionando problemas comuns
 
 ### Docker não sobe ou apresenta erros:
+
 1. **Verifique se o arquivo `entrypoint.sh` está no formato Unix (LF)**
 2. **Confirme que o `.env` foi criado** a partir do `.env.example`
 3. **Limpe o cache do Docker**:
-   ```bash
-   docker-compose down
-   docker system prune -f
-   docker-compose up --build
-   ```
+    ```bash
+    docker-compose down
+    docker system prune -f
+    docker-compose up --build
+    ```
 
 ### Erro de permissão (Linux/macOS):
+
 ```bash
 sudo chmod +x entrypoint.sh
 sudo chown -R $USER:$USER storage bootstrap/cache
