@@ -29,7 +29,7 @@
                     </div>
                 @endif
 
-                <form action="{{ url('/person/create') }}" method="POST">
+                <form action="{{ route('person.store') }}" method="POST">
                     @csrf
 
                     <div class="mb-3">

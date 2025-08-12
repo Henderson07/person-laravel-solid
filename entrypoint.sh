@@ -20,6 +20,7 @@ php artisan migrate --force
 
 # Ajusta permissões necessárias para Laravel
 echo "🛠️ Ajustando permissões..."
+chown -R www-data:www-data storage bootstrap/cache
 chmod -R 775 storage bootstrap/cache
 
 # Inicia o Apache
